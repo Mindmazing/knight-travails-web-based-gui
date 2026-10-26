@@ -4,18 +4,25 @@ import blackKingImg from "../assets/images/bk.png";
 export class DomGameBoard {
   constructor() {
     this.gameBoard = document.querySelector("#gameBoard");
+
     // create knight piece
     this.knight = document.createElement("img");
     this.knight.src = whiteKnightImg;
     this.knight.classList.add("chess-piece");
     this.knight.id = "knight";
+
     //create king piece
     this.king = document.createElement("img");
     this.king.src = blackKingImg;
     this.king.classList.add("chess-piece");
     this.king.id = "king";
 
-    // create game board in dom
+    //get inputs
+    this.xCoorInput = document.querySelector("input[name='x-coor']");
+    this.YCoorInput = document.querySelector("input[name='y-coor']");
+    this.findPathBtn = document.querySelector(".inputs > button");
+
+    // Display game board in site
     this.#createDomGameBoard();
   }
 
