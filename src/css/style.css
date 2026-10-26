@@ -1,8 +1,9 @@
 :root {
   --bg-color: #202734;
-  --tile-color-even: #4d2a00;
-  --tile-color-odd: #f3d2af;
+  --tile-color-even: #69923e;
+  --tile-color-odd: #ffffff;
   --text-color: #fff;
+  --highlight-dot-color: #4b4847;
 }
 
 * {
@@ -40,8 +41,18 @@ main {
 
 .chess-tile {
   background-color: var(--tile-color-odd);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .chess-tile.colored {
   background-color: var(--tile-color-even);
+}
+
+.highlight-dot {
+  width: 30%;
+  aspect-ratio: 1/1;
+  background-color: var(--highlight-dot-color);
+  border-radius: 50%;
 }
