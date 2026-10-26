@@ -46,9 +46,7 @@ export class DomGameBoard {
   }
 
   highlightPosition(x, y) {
-    let selectedTile = document.querySelector(
-      `.chess-tile[position="${x} ${y}"]`,
-    );
+    let selectedTile = this.getTile(x, y);
     // highlight position
     let dot = document.createElement("div");
     dot.classList.add("highlight-dot");
@@ -65,5 +63,17 @@ export class DomGameBoard {
     let chessTile = this.gameBoard.querySelector("#king").parentNode;
     let position = chessTile.getAttribute("position").split(" ");
     return position.map(Number);
+  }
+
+  getTile(x, y) {
+    return document.querySelector(`.chess-tile[position="${x} ${y}"]`);
+  }
+
+  moveKnight(x, y) {
+    // remove knight from current position
+    let knightPosition = this.getKnightPosition();
+    this.getTile(...knightPosition).removeChild(this.knight);
+    // place knight in new position
+    this.getTile(x, y).appendChild(this.knight);
   }
 }
