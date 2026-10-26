@@ -5,8 +5,9 @@ import "./css/style.css";
 // create chess tiles
 let gameBoard = new DomGameBoard();
 
-let moves = knightMoves([0, 0], [7, 7]);
-moves.shift();
+let start = gameBoard.getKnightPosition();
+let end = gameBoard.getKingPosition();
+
+let moves = knightMoves(start, end);
+
 moves.forEach((move) => gameBoard.highlightPosition(...move));
-console.log(gameBoard.getKnightPosition());
-console.log(gameBoard.getKingPosition());

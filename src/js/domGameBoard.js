@@ -58,12 +58,12 @@ export class DomGameBoard {
   getKnightPosition() {
     let chessTile = this.gameBoard.querySelector("#knight").parentNode;
     let position = chessTile.getAttribute("position").split(" ");
-    return position;
+    return position.map(Number);
   }
 
   getKingPosition() {
     let chessTile = this.gameBoard.querySelector("#king").parentNode;
     let position = chessTile.getAttribute("position").split(" ");
-    return position;
+    return position.map(Number);
   }
 }
