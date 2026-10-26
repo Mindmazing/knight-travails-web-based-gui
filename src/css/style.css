@@ -44,6 +44,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .chess-tile.colored {
@@ -55,4 +56,15 @@ main {
   aspect-ratio: 1/1;
   background-color: var(--highlight-dot-color);
   border-radius: 50%;
+}
+
+.chess-piece {
+  width: 90%;
+  transition: rotate 0.3s;
+  position: absolute;
+}
+
+.chess-piece:hover {
+  rotate: 10deg;
+  cursor: pointer;
 }
