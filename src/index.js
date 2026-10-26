@@ -5,25 +5,31 @@ import "./css/style.css";
 // create chess tiles
 let gameBoard = new DomGameBoard();
 
-gameBoard.moveKnight(1, 0);
+gameBoard.moveKnight(0, 0);
 
-// get starting position
-let start = gameBoard.getKnightPosition();
-let end = gameBoard.getKingPosition();
+gameBoard.findPathBtn.addEventListener("click", () => {
+  // clean board from dots
+  gameBoard.cleanBoard();
 
-// calculate moves
-let moves = knightMoves(start, end);
-moves.shift();
+  // get inputs and move knight to inputs
+  gameBoard.moveKnight(...gameBoard.getInputCoors());
 
-// highlight moves in board
-moves.forEach((move) => {
-  gameBoard.highlightPosition(...move);
+  let start = gameBoard.getKnightPosition();
+  let end = gameBoard.getKingPosition();
+
+  // calculate moves
+  let moves = knightMoves(start, end);
+
+  // highlight moves in board
+  moves.forEach((move) => {
+    gameBoard.highlightPosition(...move);
+  });
+
+  let knightMovementInterval = setInterval(() => {
+    gameBoard.moveKnight(...moves.shift());
+
+    if (!moves.length) {
+      clearInterval(knightMovementInterval);
+    }
+  }, 500);
 });
-
-let knightMovementInterval = setInterval(() => {
-  gameBoard.moveKnight(...moves.shift());
-
-  if (!moves.length) {
-    clearInterval(knightMovementInterval);
-  }
-}, 500);

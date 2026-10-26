@@ -19,7 +19,7 @@ export class DomGameBoard {
 
     //get inputs
     this.xCoorInput = document.querySelector("input[name='x-coor']");
-    this.YCoorInput = document.querySelector("input[name='y-coor']");
+    this.yCoorInput = document.querySelector("input[name='y-coor']");
     this.findPathBtn = document.querySelector(".inputs > button");
 
     // Display game board in site
@@ -82,5 +82,23 @@ export class DomGameBoard {
     this.getTile(...knightPosition).removeChild(this.knight);
     // place knight in new position
     this.getTile(x, y).appendChild(this.knight);
+  }
+
+  getInputCoors() {
+    let xCoor = +this.xCoorInput.value - 1;
+    let yCoor = +this.yCoorInput.value - 1;
+
+    if (xCoor <= 7 && xCoor >= 0 && yCoor <= 7 && yCoor >= 0)
+      return [xCoor, yCoor];
+
+    return [0, 0];
+  }
+
+  cleanBoard() {
+    // select all tiles
+    const dots = document.querySelectorAll(".chess-tile>.highlight-dot");
+    dots.forEach((tile) => {
+      tile.remove();
+    });
   }
 }
